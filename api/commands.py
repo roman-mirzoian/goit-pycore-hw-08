@@ -50,6 +50,20 @@ def show_phone(args, book: AddressBook):
     else:
         all_record_phones = record.get_phone_values()
         return f"Contact {name} has next phones: {', '.join(all_record_phones)}"
+    
+@input_error
+def remove_phone(args, book: AddressBook):
+    name, phone = args
+    record = book.find(name)
+    if record is None:
+        return get_not_found_record_message(name)
+    else:
+        all_record_phones = record.get_phone_values()
+        if not phone in all_record_phones:
+            return f"Contact {name} doesn't have this phone"
+        
+        record.remove_phone(phone)
+        return f"Contact {name} phone was removed."
 
 def show_all(book: AddressBook):
     records = book.get_all_records()
