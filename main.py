@@ -2,7 +2,7 @@
 Main module for working with bot
 """
 from db.db import load_data, save_data
-from api.commands import add_birthday, add_contact, change_contact, get_birthdays, show_all, show_birthday, show_phone
+from api.commands import add_birthday, add_contact, change_contact, delete_contact, get_birthdays, show_all, show_birthday, show_phone
 from helpers.helpers import parse_input
 from helpers.loggers import log_answer, log_base, log_error
 
@@ -29,6 +29,8 @@ def main():
                 log_answer(add_contact(args, book))
             elif command == "change":
                 log_answer(change_contact(args, book))
+            elif command == "delete":
+                log_answer(delete_contact(args, book))
             elif command == "phone":
                 log_answer(show_phone(args, book))
             elif command == "all":

@@ -30,6 +30,18 @@ def change_contact(args, book: AddressBook):
     return message
 
 @input_error
+def delete_contact(args, book: AddressBook):
+    name = args[0]
+    record = book.find(name)
+    message = "Contact deleted."
+    if record is None:
+        message = get_not_found_record_message(name)
+    else:
+        book.delete(name)
+
+    return message
+
+@input_error
 def show_phone(args, book: AddressBook):
     name = args[0]
     record = book.find(name)
