@@ -1,0 +1,2 @@
+DATE_FORMAT = "%d.%m.%Y"
+WEEK_DAYS_LIMIT = 7
