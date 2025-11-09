@@ -13,11 +13,14 @@ class AddressBook(UserDict):
     """
     def add_record(self, record: Record):
         self.data[record.name.value] = record
+
     def find(self, name: str) -> Record | None:
         return self.data.get(name)
+    
     def delete(self, name: str):
         if name in self.data:
             del self.data[name]
+
     def get_upcoming_birthdays(self) -> list[dict[str, str]]:
         today = datetime.today().date()
         users: dict[str, Record] = self.data
@@ -45,5 +48,6 @@ class AddressBook(UserDict):
             congratulation_dates.append({ "name": user_name, "congratulation_date": birthday_this_year.strftime(DATE_FORMAT) })
             
         return congratulation_dates
+    
     def get_all_records(self) -> dict[str, Record]:
         return self.data

@@ -4,6 +4,9 @@ def log_base(message):
     print(f"{Fore.BLUE}{message}{Fore.RESET}")
 
 def log_answer(message):
+    if (message is None):
+        return
+
     print(f"{Fore.GREEN}{message}{Fore.RESET}")
 
 def log_error(message):
