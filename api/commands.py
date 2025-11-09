@@ -14,6 +14,10 @@ def add_contact(args, book: AddressBook):
         book.add_record(record)
         message = "Contact added."
     if phone:
+        all_record_phones = record.get_phone_values()
+        if phone in all_record_phones:
+            return f"Contact {name} already has this phone number."
+        
         record.add_phone(phone)
     return message
 
